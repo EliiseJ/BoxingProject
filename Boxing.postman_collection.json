@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "63466bd3-09b4-48ef-8727-04de69b2993b",
+		"name": "Boxing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addFighter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4883dfdd-873b-4b46-85db-fd0336cab78a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"Eliise\",\r\n\t\"weight\":50,\r\n\t\"wins\":10,\r\n\t\"losses\":2\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/fighter?token=salajane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"fighter"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCompetition",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1efbbe4-ea40-438f-96b2-ed54685aaddb",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"boxingType\":\"K1\",\r\n\t\"date\":\"2002-05-30T09:00:00\",\r\n\t\"rounds\":3\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/competition?token=salajane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"competition"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCompetitionFighter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9809a8d-558c-44dc-939d-e4425a7898fd",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/competitionFighter?token=salajane&fighterId=1&competitionId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"competitionFighter"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						},
+						{
+							"key": "fighterId",
+							"value": "1"
+						},
+						{
+							"key": "competitionId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFighters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5aa19fa-fab4-4d01-bcdd-91f039ebc1ce",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Fighter name is Eliise\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eql(\"Eliise\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"Eliise\",\r\n\t\"weight\":50,\r\n\t\"wins\":10,\r\n\t\"losses\":2\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/fighters/search?token=salajane&name=Eliise",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"fighters",
+						"search"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						},
+						{
+							"key": "name",
+							"value": "Eliise"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFightersList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd3fc0af-13bb-4d21-869c-c5c4f74c9caa",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"fighter name is Eliise\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eql(\"Eliise\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"Eliise\",\r\n\t\"weight\":50,\r\n\t\"wins\":10,\r\n\t\"losses\":2\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/fighters?token=salajane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"fighters"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFighter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6b4193b-7cdf-4778-bd16-1069c25ec8a3",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"fighter name is Eliise\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"Eliise\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/fighter/1?token=salajane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"fighter",
+						"1"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCompetition",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0700853-b00b-4747-9980-1faf8afaf62d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"competition type is K1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.boxingType).to.eql(\"K1\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/competition/1?token=salajane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"competition",
+						"1"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCompetitionsList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "05faeef0-2cdd-464b-8584-081d17280355",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"competition type is K1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].boxingType).to.eql(\"K1\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"Eliise\",\r\n\t\"weight\":50,\r\n\t\"wins\":10,\r\n\t\"losses\":2\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/competitions?token=salajane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"competitions"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCompetitionFighters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0c23100-0390-401f-8919-f3c37c126b0a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"fighter name is Eliise\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eql(\"Eliise\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"Eliise\",\r\n\t\"weight\":50,\r\n\t\"wins\":10,\r\n\t\"losses\":2\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Boxing/webresources/boxingcompetition/competitionFighters/1?token=salajane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Boxing",
+						"webresources",
+						"boxingcompetition",
+						"competitionFighters",
+						"1"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "salajane"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

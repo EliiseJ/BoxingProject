@@ -1,0 +1,248 @@
+swagger: '2.0'
+info:
+  version: 0.1-SNAPSHOT
+  title: Boxing REST
+host: 'localhost:8080'
+basePath: /Boxing/webresources
+schemes:
+  - http
+paths:
+  /boxingcompetition/competition:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - type: string
+          name: token
+          in: query
+          required: true
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NewCompetition'
+      responses:
+        '204':
+          description: No Content
+          headers: {}
+  '/boxingcompetition/competition/{id}':
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: integer
+          name: id
+          in: path
+          required: true
+        - type: string
+          name: token
+          in: query
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            $ref: '#/definitions/Competition'
+  /boxingcompetition/competitionFighter:
+    post:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: integer
+          name: competitionId
+          in: query
+          required: true
+        - type: integer
+          name: fighterId
+          in: query
+          required: true
+        - type: string
+          name: token
+          in: query
+          required: true
+      responses:
+        '204':
+          description: No Content
+          headers: {}
+  '/boxingcompetition/competitionFighters/{id}':
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: integer
+          name: id
+          in: path
+          required: true
+        - type: string
+          name: token
+          in: query
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Fighter'
+  /boxingcompetition/competitions:
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: string
+          name: token
+          in: query
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Competition'
+  /boxingcompetition/fighter:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - type: string
+          name: token
+          in: query
+          required: true
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NewFighter'
+      responses:
+        '204':
+          description: No Content
+          headers: {}
+  '/boxingcompetition/fighter/{id}':
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: integer
+          name: id
+          in: path
+          required: true
+        - type: string
+          name: token
+          in: query
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            $ref: '#/definitions/Fighter'
+  /boxingcompetition/fighters:
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: string
+          name: token
+          in: query
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Fighter'
+  /boxingcompetition/fighters/search:
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: integer
+          name: losses
+          in: query
+          required: true
+        - type: string
+          name: name
+          in: query
+          required: true
+        - type: string
+          name: token
+          in: query
+          required: true
+        - type: integer
+          name: weight
+          in: query
+          required: true
+        - type: integer
+          name: wins
+          in: query
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Fighter'
+definitions:
+  Competition:
+    properties:
+      boxingType:
+        type: string
+      date:
+        type: object
+      fighters:
+        type: array
+        items:
+          $ref: '#/definitions/Fighter'
+      id:
+        type: integer
+      rounds:
+        type: integer
+  Fighter:
+    properties:
+      id:
+        type: integer
+      losses:
+        type: integer
+      name:
+        type: string
+      weight:
+        type: integer
+      wins:
+        type: integer
+  NewCompetition:
+    properties:
+      boxingType:
+        type: string
+      date:
+        type: object
+      rounds:
+        type: integer
+  NewFighter:
+    properties:
+      losses:
+        type: integer
+      name:
+        type: string
+      weight:
+        type: integer
+      wins:
+        type: integer
