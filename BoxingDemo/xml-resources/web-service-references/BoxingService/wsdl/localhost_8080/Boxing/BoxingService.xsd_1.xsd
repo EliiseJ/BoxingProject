@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://boxingcompetition/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://boxingcompetition/">
+
+<xs:element name="AddCompetition" type="tns:AddCompetition"/>
+
+<xs:element name="AddCompetitionFighter" type="tns:AddCompetitionFighter"/>
+
+<xs:element name="AddCompetitionFighterResponse" type="tns:AddCompetitionFighterResponse"/>
+
+<xs:element name="AddCompetitionResponse" type="tns:AddCompetitionResponse"/>
+
+<xs:element name="AddFighter" type="tns:AddFighter"/>
+
+<xs:element name="AddFighterResponse" type="tns:AddFighterResponse"/>
+
+<xs:element name="GetCompetition" type="tns:GetCompetition"/>
+
+<xs:element name="GetCompetitionFighters" type="tns:GetCompetitionFighters"/>
+
+<xs:element name="GetCompetitionFightersResponse" type="tns:GetCompetitionFightersResponse"/>
+
+<xs:element name="GetCompetitionList" type="tns:GetCompetitionList"/>
+
+<xs:element name="GetCompetitionListResponse" type="tns:GetCompetitionListResponse"/>
+
+<xs:element name="GetCompetitionResponse" type="tns:GetCompetitionResponse"/>
+
+<xs:element name="GetFighterById" type="tns:GetFighterById"/>
+
+<xs:element name="GetFighterByIdResponse" type="tns:GetFighterByIdResponse"/>
+
+<xs:element name="GetFighterList" type="tns:GetFighterList"/>
+
+<xs:element name="GetFighterListResponse" type="tns:GetFighterListResponse"/>
+
+<xs:element name="GetFighters" type="tns:GetFighters"/>
+
+<xs:element name="GetFightersResponse" type="tns:GetFightersResponse"/>
+
+<xs:complexType name="AddCompetitionFighter">
+<xs:sequence>
+<xs:element name="fighterId" type="xs:long"/>
+<xs:element name="competitionId" type="xs:long"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddCompetitionFighterResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="AddFighter">
+<xs:sequence>
+<xs:element name="newFighter" type="tns:newFighter" minOccurs="0"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="newFighter">
+<xs:sequence>
+<xs:element name="losses" type="xs:int"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="weight" type="xs:int"/>
+<xs:element name="wins" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddFighterResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="GetFighters">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="weight" type="xs:int" minOccurs="0"/>
+<xs:element name="wins" type="xs:int" minOccurs="0"/>
+<xs:element name="losses" type="xs:int" minOccurs="0"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetFightersResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fighter" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fighter">
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="losses" type="xs:int"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="weight" type="xs:int"/>
+<xs:element name="wins" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetCompetitionList">
+<xs:sequence>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetCompetitionListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:competition" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="competition">
+<xs:sequence>
+<xs:element name="boxingType" type="xs:string" minOccurs="0"/>
+<xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fighters" type="tns:fighter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="rounds" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetCompetitionFighters">
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetCompetitionFightersResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fighter" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetFighterList">
+<xs:sequence>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetFighterListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fighter" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetFighterById">
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetFighterByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fighter" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddCompetition">
+<xs:sequence>
+<xs:element name="newCompetition" type="tns:newCompetition" minOccurs="0"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="newCompetition">
+<xs:sequence>
+<xs:element name="boxingType" type="xs:string" minOccurs="0"/>
+<xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="rounds" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddCompetitionResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="GetCompetition">
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetCompetitionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:competition" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
