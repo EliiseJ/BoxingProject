@@ -176,11 +176,11 @@ paths:
         - type: integer
           name: losses
           in: query
-          required: true
+          required: false
         - type: string
           name: name
           in: query
-          required: true
+          required: false
         - type: string
           name: token
           in: query
@@ -188,11 +188,11 @@ paths:
         - type: integer
           name: weight
           in: query
-          required: true
+          required: false
         - type: integer
           name: wins
           in: query
-          required: true
+          required: false
       responses:
         '200':
           description: OK
