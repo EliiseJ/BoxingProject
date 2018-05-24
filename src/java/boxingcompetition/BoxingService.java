@@ -8,6 +8,7 @@ package boxingcompetition;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.xml.bind.ValidationException;
 
 
 
@@ -58,8 +59,9 @@ public class BoxingService {
                 .collect(Collectors.toList());
     }
     
-    public void addFighter(NewFighter newFighter, String token) {
+    public void addFighter(NewFighter newFighter, String token) throws ValidationException {
         checkToken(token);
+        newFighter.validate();
         Fighter fighter = new Fighter();
         fighter.setId(nextFighterID++);
         fighter.setName(newFighter.getName());

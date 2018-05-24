@@ -5,15 +5,26 @@
  */
 package boxingcompetition;
 
+import javax.xml.bind.ValidationException;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author Eliise
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "NewFighterRequest")
 public class NewFighter {
-    
+    @XmlElement(required=true)
     String name;
+    @XmlElement(required=true)
     int weight;
+    @XmlElement(required=true)
     int wins;
+    @XmlElement(required=true)
     int losses;
 
     public String getName() {
@@ -46,5 +57,17 @@ public class NewFighter {
 
     public void setLosses(int losses) {
         this.losses = losses;
+    }
+    
+    public void validate() throws ValidationException {
+        if (weight <= 0) {
+            throw new ValidationException("Kaal peab olema suurem nullist!");                    
+        }
+        if (wins < 0) {
+            throw new ValidationException("Võitude arv ei tohi olla negatiivne!");                    
+        }
+        if (losses < 0) {
+            throw new ValidationException("Kaotuste arv ei tohi olla negatiivne!");                    
+        }
     }
 }

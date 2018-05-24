@@ -16,6 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.ValidationException;
 
 
 @Path("/boxingcompetition")
@@ -67,7 +68,7 @@ public class RESTService {
     @Path("/fighter")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void addFighter(NewFighter newFighter, @QueryParam("token") String token) {
+    public void addFighter(NewFighter newFighter, @QueryParam("token") String token) throws ValidationException {
         boxingService.addFighter(newFighter, token);
     }
     

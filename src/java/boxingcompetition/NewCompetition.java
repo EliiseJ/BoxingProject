@@ -6,15 +6,24 @@
 package boxingcompetition;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Eliise
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "NewCompetitionRequest")
 public class NewCompetition {
     
+    @XmlElement(name = "boxingType", required = true)
     String boxingType;
+    @XmlElement(name = "date", required = true)
     Date date;
+    @XmlElement(name = "rounds", required = true)
     int rounds;
 
     public String getBoxingType() {
